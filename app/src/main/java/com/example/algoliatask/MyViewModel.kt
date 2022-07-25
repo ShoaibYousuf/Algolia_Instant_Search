@@ -26,12 +26,22 @@ import com.algolia.search.model.IndexName.Companion.serializer
 
 
 class MyViewModel : ViewModel() {
-
-    val searcher = HitsSearcher(
-        applicationID = ApplicationID("latency"),
-        apiKey = APIKey("1f6fd3a6fb973cb08419fe7d288fa4db"),
-        indexName = IndexName("instant_search")
+/*
+    private val searcher = HitsSearcher(
+        applicationID = ApplicationID("TLPEM8HW8C"),
+        apiKey = APIKey("473f4d6de29ab1a4aae9f8a268d46371"),
+        indexName = IndexName("dev_to_products")
     )
+*/
+
+
+    private val searcher = HitsSearcher(
+        applicationID = ApplicationID("ZBUGRCNOHV"),
+        apiKey = APIKey("9749b5c85822c5526b3681f55ced0f2b"),
+        indexName = IndexName("sampleData")
+    )
+
+
 
     val paginator = Paginator(
         searcher = searcher,
@@ -41,10 +51,10 @@ class MyViewModel : ViewModel() {
 
     val searchBox = SearchBoxConnector(searcher)
     val stats = StatsConnector(searcher)
-    //val connection = ConnectionHandler(searchBox)
+    private val connection = ConnectionHandler(searchBox)
 
 
-    val filterState = FilterState()
+    private val filterState = FilterState()
     val facetList = FacetListConnector(
         searcher = searcher,
         filterState = filterState,
@@ -55,7 +65,7 @@ class MyViewModel : ViewModel() {
         sortBy = listOf(FacetSortCriterion.CountDescending, FacetSortCriterion.IsRefined),
         limit = 100
     )
-    val connection = ConnectionHandler(searchBox, stats, facetList)
+    //val connection = ConnectionHandler(searchBox, stats, facetList)
 
     init {
         connection += searchBox.connectPaginator(paginator)

@@ -11,5 +11,6 @@ class ProductViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
     fun bind(product: Product) {
         itemName.text = product.highlightedName?.toSpannedString() ?: product.name
+       // itemName.text = product.productName
     }
 }

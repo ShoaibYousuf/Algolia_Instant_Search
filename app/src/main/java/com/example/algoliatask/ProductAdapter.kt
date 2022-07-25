@@ -17,6 +17,7 @@ class ProductAdapter : PagingDataAdapter<Product, ProductViewHolder>(ProductDiff
     }
 
     object ProductDiffUtil : DiffUtil.ItemCallback<Product>() {
+        //override fun areItemsTheSame(oldItem: Product, newItem: Product) = oldItem.id == newItem.id
         override fun areItemsTheSame(oldItem: Product, newItem: Product) = oldItem.objectID == newItem.objectID
         override fun areContentsTheSame(oldItem: Product, newItem: Product) = oldItem == newItem
     }
